@@ -19,9 +19,9 @@ this.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
             return response || fetch(event.request);
-        })
+        }).catch(function() {
+            // if file is not in cache or if network is down
+            return caches.match('/offline-app-demo/offline.html');
+        }
     );
-}.catch(function() {
-    // if file is not in cache or if network is down
-    return caches.match('/offline-app-demo/offline.html');
 }));
