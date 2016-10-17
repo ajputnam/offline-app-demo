@@ -14,6 +14,11 @@ this.addEventListener('install', function(event) {
 });
 
 
+this.addEventListener('activate', event => {
+
+  console.log("Service Worker is activated!");
+});
+
 
 this.addEventListener('fetch', function(event) {
     event.respondWith(
